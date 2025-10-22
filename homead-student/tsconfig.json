@@ -1,0 +1,15 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["src/**/node_modules"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@homead/*": ["./src/projects/homead/*"],
+      "@student/*": ["./src/projects/student/*"],
+      "@shared/*": ["./src/shared/*"]
+    }
+  }
+}
