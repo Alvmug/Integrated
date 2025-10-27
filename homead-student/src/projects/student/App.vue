@@ -1,6 +1,6 @@
 <template>
   <div class="app-root">
-    <Sidebar :links="links" />
+    <Sidebar :links="links" :isOpen="sidebarOpen" @toggle="sidebarOpen = !sidebarOpen" />
     <div class="main-area">
       <Topbar />
       <main class="content">
@@ -11,9 +11,11 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import Sidebar from './components/Sidebar.vue'
 import Topbar from './components/Topbar.vue'
+
+const sidebarOpen = ref(true)
 
 const links = reactive([
   { label: 'Home', to: '/' },
@@ -31,16 +33,8 @@ const links = reactive([
 .app-root {
   display: flex;
   height: 100vh;
-  font-family:
-    'Inter',
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  background: var(--bg-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--color-background);
   overflow: hidden;
 }
 
@@ -48,9 +42,10 @@ const links = reactive([
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--color-background);
+  color: var(--color-foreground);
   overflow: hidden;
+  min-width: 0; /* Prevent flex overflow */
 }
 
 .content {
@@ -61,37 +56,14 @@ const links = reactive([
   animation: fadeIn 0.4s ease-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.content::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-.content::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
-}
-
-.content::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
-}
-
+/* Responsive */
 @media (max-width: 880px) {
   .app-root {
     flex-direction: column;
+  }
+
+  .content {
+    padding: 16px;
   }
 }
 </style>

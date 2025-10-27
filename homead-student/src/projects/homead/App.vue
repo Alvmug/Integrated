@@ -1,9 +1,8 @@
 <script setup>
-import WelcomePage from './components/WelcomePage.vue'
 </script>
 <template>
   <main>
-    <WelcomePage />
+    <router-view />
   </main>
 </template>
 <style></style>

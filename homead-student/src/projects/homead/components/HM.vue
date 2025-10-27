@@ -10,18 +10,20 @@
         <img src="/src/projects/homead/assets/sgms-high-resolution-logo.png" alt="SMGSlogo" />
       </div>
       <div class="links">
-        <router-link to="/" class="router-link"
-          ><FontAwesomeIcon :icon="faHome" /> Home</router-link
-        >
-        <router-link to="/Teachers" class="router-link"
-          ><FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers</router-link
-        >
-        <router-link to="/Student" class="router-link"
-          ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
-        >
-        <router-link to="/Admin" class="router-link"
-          ><FontAwesomeIcon :icon="faMicrochip" /> Admin</router-link
-        >
+      <router-link to="/homead" class="router-link"
+        ><FontAwesomeIcon :icon="faHome" /> Home</router-link
+      >
+      <router-link to="/homead/Teachers" class="router-link"
+        ><FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers</router-link
+      >
+      <router-link to="/homead/Student" class="router-link"
+        ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
+      >
+      <router-link to="/homead/Admin" class="router-link"
+        ><FontAwesomeIcon :icon="faMicrochip" /> Admin</router-link
+      >
+
+
       </div>
     </div>
     <div class="info">
@@ -36,8 +38,8 @@
       <div class="students">
         <h1>
           <FontAwesomeIcon :icon="faHand" />
-          <p>Absence/Presence ration</p>
-          <router-link to="/Mentron" class="routes"><h1>80-90</h1></router-link>
+          <p style="margin-top: 10%;">Absence/Presence ration</p>
+      <router-link to="/homead/Mentron" class="routes"><h1>80-90</h1></router-link>
           <p>7:30 A.M</p>
         </h1>
       </div>
@@ -166,11 +168,28 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
-<style>
+<style scoped>
+body {
+  background: rgb(5, 5, 5);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    Segoe UI Symbol,
+    'Noto Color Emoji';
+  overflow: auto;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+  overflow-x: hidden;
+}
 .body {
-  width: 200vh;
-  height: 300vh;
+  width: 100vw;
+  min-height: 400vh;
   background: white;
+  position: relative;
 }
 .nav {
   display: flex;
@@ -234,16 +253,16 @@ onUnmounted(() => {
   display: flex;
   width: fit-content;
   position: absolute;
-  top: 45%;
+  top: 15%;
   gap: 1%;
 }
 .students {
   border-radius: 11px;
   padding: 35px;
-  top: 45%;
+
   left: 5%;
   width: 25vw;
-  height: 16vw;
+  height: 23vw;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -256,7 +275,10 @@ onUnmounted(() => {
 }
 .students:nth-child(2) {
   box-shadow: 4px 5px 30px rgb(190, 190, 190);
+}.students:nth-child(2) p {
+  margin-top: -15%;
 }
+
 .students:nth-child(3) {
   box-shadow: 4px 5px 30px rgb(190, 190, 190);
   left: 59%;
@@ -271,6 +293,7 @@ onUnmounted(() => {
 .students p {
   color: rgb(55, 55, 55);
   font-size: 25px;
+  
 }
 .box1 {
   display: flex;
@@ -278,7 +301,7 @@ onUnmounted(() => {
   width: 35rem;
   height: 24rem;
   background: rgb(246, 241, 241);
-  top: 90%;
+  top: 120%;
   left: 1%;
   border-radius: 12px;
   box-shadow: 1px 1px 49px rgb(156, 155, 155);
@@ -297,12 +320,14 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   width: 30rem;
+  top: 120%;
 }
 .box1:nth-child(5) {
   left: 40%;
   display: flex;
   justify-content: center;
   width: 30rem;
+  top: 120%;
 }
 .box1:nth-child(5) > h1 {
   left: 5%;
@@ -405,7 +430,7 @@ onUnmounted(() => {
   height: 10rem;
   background-color: black;
   position: absolute;
-  top: 160%;
+  top: 200%;
   left: 1%;
   display: flex;
   justify-content: center;
@@ -428,7 +453,7 @@ onUnmounted(() => {
 }
 .principal {
   position: absolute;
-  top: 150%;
+  top: 180%;
   left: 70%;
 }
 .principal img {
@@ -480,11 +505,122 @@ onUnmounted(() => {
 }
 .good h1 {
   position: absolute;
-
   font-size: 20px;
   left: 150%;
   top: 58%;
   color: white;
   z-index: 100;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .info {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .students {
+    width: 45%;
+    margin: 10px;
+  }
+  .box1 {
+    width: 90%;
+    left: 5%;
+    margin-bottom: 20px;
+  }
+  .Sudo {
+    width: 90%;
+    left: 5%;
+  }
+  .principal img {
+    width: 300px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .body {
+    min-height: 600vh;
+  }
+  .info {
+    top: 25%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .students {
+    width: 80%;
+    height: auto;
+    padding: 20px;
+  }
+  .students h1:nth-child(3) {
+    font-size: 30px;
+  }
+  .students p {
+    font-size: 18px;
+  }
+  .box1 {
+    position: static;
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+    top: auto;
+  }
+  .box1:nth-child(4), .box1:nth-child(5) {
+    left: auto;
+  }
+  .Sudo {
+    position: static;
+    width: 90%;
+    margin: 20px auto;
+    top: auto;
+  }
+  .principal {
+    position: static;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .principal img {
+    width: 250px;
+    height: 200px;
+  }
+  .scale {
+    font-size: 25px;
+  }
+  .Bad h1, .good h1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile > h1 {
+    font-size: 18px;
+  }
+  .profile p {
+    font-size: 14px;
+  }
+  .nav {
+    padding: 0 10px;
+  }
+  .links {
+    gap: 10px;
+  }
+  .links .router-link {
+    font-size: 12px;
+    padding: 5px;
+  }
+  .students {
+    width: 90%;
+  }
+  .box1 > h1 {
+    font-size: 20px;
+  }
+  .request > h1 {
+    font-size: 16px;
+  }
+  .request > .enroll {
+    font-size: 16px;
+  }
+  .Sudo {
+    font-size: 18px;
+  }
 }
 </style>

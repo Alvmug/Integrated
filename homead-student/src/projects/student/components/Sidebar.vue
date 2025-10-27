@@ -288,11 +288,11 @@ function handleLogout() {
   .sidebar {
     transform: translateX(-100%);
   }
-  
+
   .sidebar-hidden {
     transform: translateX(-100%);
   }
-  
+
   .sidebar:not(.sidebar-hidden) {
     transform: translateX(0);
   }
