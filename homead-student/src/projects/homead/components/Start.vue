@@ -84,26 +84,32 @@ import { faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 </script>
-<style>
+<style scoped>
+body{
+  margin: 0;
+  padding: 0;
+}
 .status {
   position: absolute;
-  top: 30%;
-  left: 20%;
-  color: rgb(226, 223, 223);
-  font-size: 50px;
+  top: 20%;
+  left: 25%;
+  color: #00d5ffdd;
+  font-size: 40px;
 }
 .status > h1 {
   font-weight: 500;
 }
-
+.cards{
+  padding: 4px;
+  gap: 100px;
+}
 .card1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   top: 52%;
   left: 1%;
-  width: 33rem;
+  width: 25rem;
   height: 20rem;
   border-radius: 12px;
   background-color: rgb(22, 22, 22);
@@ -118,9 +124,8 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   top: 52%;
-  left: 37%;
+  left: 33%;
   width: 25rem;
   height: 20rem;
   border-radius: 12px;
@@ -136,7 +141,7 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+
   top: 52%;
   left: 65%;
   width: 33rem;

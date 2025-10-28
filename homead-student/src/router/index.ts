@@ -27,6 +27,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/projects/student/App.vue'),
   },
   {
+    path: '/teachers',
+    name: 'Teachers',
+    component: () => import('@/projects/teachers/App.vue'),
+meta: { project: 'teachers' },
+  },
+  {
     path: '/debug',
     name: 'Debug',
     component: { template: '<div style="padding:1rem">Debug route OK</div>' },

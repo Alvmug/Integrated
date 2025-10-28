@@ -10,7 +10,7 @@
         <img src="/src/projects/homead/assets/sgms-high-resolution-logo.png" alt="SMGSlogo" />
       </div>
       <div class="links">
-        <router-link to="/homead" class="router-link"
+        <router-link to="/homead" :class="['router-link', { 'router-link-active': isHomeActive }]"
           ><FontAwesomeIcon :icon="faHome" /> Home</router-link
         >
         <router-link to="/homead/Teachers" class="router-link"
@@ -19,7 +19,7 @@
         <router-link to="Student" class="router-link"
           ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
         >
-        <router-link to="/homead/Admin" class="router-link"
+        <router-link to="/homead/Admin" :class="['router-link', { 'router-link-active': isAdminActive }]"
           ><FontAwesomeIcon :icon="faMicrochip" /> Admin</router-link
         >
       </div>
@@ -83,8 +83,18 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import _ from 'lodash'
+
+const route = useRoute()
+const isAdminActive = computed(() => {
+  const adminRoutes = ['/homead/Admin', '/homead/HM', '/homead/DoS', '/homead/Secretary', '/homead/Mentron', '/homead/Accountant']
+  return adminRoutes.includes(route.path)
+})
+const isHomeActive = computed(() => {
+  return route.path === '/homead'
+})
 
 const attendanceData = [
   { id: 1, name: 'John Doe', percentage: 95 },

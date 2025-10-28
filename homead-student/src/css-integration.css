@@ -1,0 +1,46 @@
+/* CSS Integration Fix for HomeAD Student */
+#app {
+  /* Nuclear isolation */
+  all: initial !important;
+  contain: layout style paint !important;
+  isolation: isolate !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#app * {
+  all: unset;
+  box-sizing: border-box;
+}
+
+/* Re-establish ONLY your design system */
+#app {
+  /* HomeAD Student Color System */
+  --primary: #1a365d;
+  --secondary: #2d3748;
+  --accent: #3182ce;
+  --light: #f7fafc;
+  --danger: #e53e3e;
+  --success: #38a169;
+  --warning: #dd6b20;
+  --info: #3182ce;
+  --text: #2d3748;
+  --text-light: #718096;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  background: white !important;
+  color: var(--text) !important;
+  font-family: 'Poppins', sans-serif !important;
+  line-height: 1.6 !important;
+}
+
+/* Force layout containment */
+.app-root,
+.dashboard,
+.profile,
+.nav,
+.content {
+  contain: style layout !important;
+  position: relative !important;
+}

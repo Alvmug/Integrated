@@ -4,11 +4,11 @@
       <img src="/src/projects/homead/assets/sgms-high-resolution-logo.png" alt="SMGSlogo" />
     </div>
     <div class="links">
-      <router-link to="/" class="router-link"><FontAwesomeIcon :icon="faHome" /> Home</router-link>
+      <router-link to="/homead" class="router-link"><FontAwesomeIcon :icon="faHome" /> Home</router-link>
       <router-link to="/Teachers" class="router-link"
         ><FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers</router-link
       >
-      <router-link to="/homead/Student" class="router-link"
+      <router-link to="/Student" class="router-link"
         ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
       >
       <router-link to="/homead/Admin" class="router-link"
@@ -20,7 +20,7 @@
   <div class="add">
     <h1>Scholastic Indulgence</h1>
     <p class="center">Your academic perfomance, activities, and controls in one place.</p>
-    <router-link to="/Start" class="register">Get Started</router-link>
+    <router-link to="/homead/Start" class="register">Get Started</router-link>
   </div>
   <br />
   <div class="desc">
@@ -135,7 +135,7 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 </script>
 <style scoped>
 body {
-  background: rgb(5, 5, 5);
+  background: rgb(0, 0, 0);
   font-family:
     ui-sans-serif,
     system-ui,
@@ -160,7 +160,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: italic;
   font-size: 40px;
-  color: rgb(206, 206, 206);
+  color: #00d4ff;
   flex-direction: column;
   opacity: 0;
   transition: 1.4s ease;
@@ -180,6 +180,7 @@ body {
   font-size: 25px;
   width: 590px;
   opacity: 80%;
+  color: whitesmoke;
 
 }
 .add .register {
@@ -187,7 +188,7 @@ body {
   top: 120%;
   text-decoration: none;
   color: rgb(0, 0, 0);
-background: rgb(255, 255, 255);
+background: #00d4ff;
   font-weight: 550;
   border-radius: 35px;
   font-size: 40px;
@@ -212,6 +213,7 @@ background: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   transition: 0.6s ease;
+  box-shadow: 1px 1px 13px #00d5ff7d;
 }
 .Storage {
   display: flex;
@@ -219,10 +221,11 @@ background: rgb(255, 255, 255);
   top: -29%;
   left: 42%;
   border-radius: 12px;
-  width: 33vw;
+  width: 38vw;
   height: 12rem;
- padding: 10px;
- background-color: rgb(255, 255, 255);
+ padding: 19px;
+ background-color: rgb(0, 0, 0);
+
 }
 .Storage p {
   position: absolute;
@@ -240,7 +243,7 @@ left: 1%;
   margin-top: 3%;
   font-size: 40px;
   font-weight: 500;
-  color: rgb(0, 0, 0);
+  color: #00d4ff;
 }
 .Storage img {
   border-radius: 12px;
@@ -253,9 +256,9 @@ left: 1%;
 .Icon {
   opacity: 80%;
   font-size: 45px;
-  margin-left: -4%;
+  margin-left: -7%;
   padding: 5% 5%;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 .Icon:nth-child(1){
   margin-left: 10%;
@@ -269,14 +272,14 @@ left: 1%;
   width: 40vw;
   height: 10rem;
   padding: 10px;
-  background: whitesmoke;
+  background: rgb(0, 0, 0);
 }
 .monitor h1 {
   margin-top: 3%;
   margin-left:1%;
   font-size: 30px;
   font-weight: 500;
-color: rgb(0, 0, 0);
+color: #00d4ff;
 }
 .monitor p {
   font-style: italic;
@@ -320,11 +323,12 @@ color: rgb(0, 0, 0);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 10px;
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(0, 0, 0);
+  box-shadow: 1px -1px 13px #00d5ff5c;
 }
 .result h1 {
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: #00d4ff;
   margin-top: 4%;
   margin-left: -25%;
 }
@@ -383,6 +387,7 @@ color: rgb(0, 0, 0);
   box-sizing: border-box;
   height: fit-content;
   width: 100%;
+  box-shadow: 0px -5px 15px #00d4ff;
    
 }
 .navbar.scrolled {
@@ -400,70 +405,16 @@ color: rgb(0, 0, 0);
   width: 160px;
   height: 160px;
 }
-.links {
-  display: flex;
-  justify-content: center;
-  width: 800px;
-  height: 83px;
-  border-radius: 5px;
-  position: relative;
-  top: 1%;
-  background-color: rgb(38, 38, 38);
-  left: 15%;
-  border: solid rgba(82, 81, 81, 0.258);
-  gap: 90px;
-}
-.links .router-link:nth-child(1) {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 17px;
-  width: 100px;
-  border-radius: 5px;
-  margin-top: 2%;
-  padding: 8px;
-  height: 43px;
-  text-decoration: none;
-}
-.links .router-link:nth-child(2) {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 17px;
-  width: 120px;
-  border-radius: 5px;
-  padding: 8px;
-  text-decoration: none;
-  margin-top: 2%;
-  height: 43px;
-}
-.links .router-link:nth-child(3) {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 17px;
-  width: 110px;
-  border-radius: 5px;
-  padding: 8px;
-  text-decoration: none;
-  margin-top: 2%;
-  height: 43px;
-}
-.links .router-link:nth-child(4) {
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 17px;
-  width: 100px;
-  border-radius: 5px;
-  padding: 8px;
-  text-decoration: none;
-  margin-top: 2%;
-  height: 43px;
+.router-link{
+  color: rgb(212, 212, 212);
 }
 .router-link:hover {
   transform: translateY(-9%);
   background-color: rgb(0, 0, 0);
 }
 .router-link-active {
-  background-color: rgb(24, 23, 23);
-  box-shadow: -4px 2px 1px white;
+  background-color: #00d5ffc8;
+ 
 }
 .inp{
   margin-top: 10%;

@@ -4,20 +4,21 @@
       <img src="/src/projects/homead/assets/sgms-high-resolution-logo.png" alt="SMGSlogo" />
     </div>
     <div class="links">
-      <router-link to="/homead" class="router-link"><FontAwesomeIcon :icon="faHome" /> Home</router-link>
+      <router-link to="/homead" :class="['router-link', { 'router-link-active': isHomeActive }]"
+        ><FontAwesomeIcon :icon="faHome" /> Home</router-link
+      >
       <router-link to="/homead/Teachers" class="router-link"
         ><FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers</router-link
       >
       <router-link to="/homead/Student" class="router-link"
         ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
       >
-      <router-link to="/homead/Admin" class="router-link"
+      <router-link to="/homead/Admin" :class="['router-link', { 'router-link-active': isAdminActive }]"
         ><FontAwesomeIcon :icon="faMicrochip" /> Admin</router-link
       >
     </div>
   </div>
   <br />
-
   <router-link to="/homead/HM"
     ><div class="headmaster" @click="">
       <h1><FontAwesomeIcon :icon="faUserTie" class="tie" />HM</h1>
@@ -58,9 +59,18 @@ import { faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import _ from 'lodash'
-import { onBeforeMount, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { onBeforeMount, onMounted, onUnmounted, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import Swal from 'sweetalert2'
+
+const route = useRoute()
+const isAdminActive = computed(() => {
+  const adminRoutes = ['/homead/Admin', '/homead/HM', '/homead/DoS', '/homead/Secretary', '/homead/Mentron', '/homead/Accountant']
+  return adminRoutes.includes(route.path)
+})
+const isHomeActive = computed(() => {
+  return route.path === '/homead'
+})
 
 const handleScroll = _.debounce(() => {
   const navbar = document.querySelector('.navbar')
@@ -103,7 +113,7 @@ onUnmounted(() => {
 </script>
 <style>
 body {
-  background: rgb(5, 5, 5);
+  background: rgb(0, 0, 0);
   font-family:
     ui-sans-serif,
     system-ui,
@@ -130,6 +140,7 @@ body {
   box-sizing: border-box;
   height: fit-content;
   width: 100%;
+    box-shadow: 0px -5px 15px #00d5ff53;
 }
 
 .navbar.scrolled {
@@ -211,14 +222,17 @@ body {
   height: 43px;
 }
 
+.router-link {
+  background: transparent;
+}
+
 .router-link:hover {
   transform: translateY(-9%);
   background-color: rgb(0, 0, 0);
 }
 
 .router-link-active {
-  background-color: rgb(24, 23, 23);
-  box-shadow: -4px 2px 1px white;
+  background-color: rgb(40, 205, 255);
 }
 
 /* Media Queries */
@@ -323,7 +337,8 @@ body {
 }
 
 .headmaster:hover {
-  background-color: black;
+  transform: translateY(-2%);
+   box-shadow: 0px 0px 10px rgb(1, 166, 255);
 }
 .headmaster {
   display: flex;
@@ -335,8 +350,9 @@ body {
   left: 5%;
   width: 25rem;
   height: 15rem;
-  background-color: rgb(27, 26, 26);
+  background-color: rgb(0, 0, 0);
   transition: 0.5s ease;
+    box-shadow: 0px 0px 1px rgba(21, 172, 253, 0.712);
 }
 .headmaster > h1 {
   position: relative;
@@ -356,11 +372,13 @@ body {
   left: 40%;
   width: 20rem;
   height: 15rem;
-  background-color: rgb(27, 26, 26);
+  background-color: rgb(0, 0, 0);
   transition: 0.5s ease;
+    box-shadow: 0px 0px 1px rgba(21, 172, 253, 0.642);
 }
 .DoS:hover {
-  background-color: black;
+  transform: translateY(-2%);
+   box-shadow: 0px 0px 10px rgb(1, 166, 255);
 }
 .DoS > h1 {
   position: relative;
@@ -379,11 +397,13 @@ body {
   left: 40%;
   width: 20rem;
   height: 15rem;
-  background-color: rgb(27, 26, 26);
+  background-color: rgb(0, 0, 0);
   transition: 0.5s ease;
+    box-shadow: 0px 0px 1px rgba(21, 172, 253, 0.664);
 }
 .Secretary:hover {
-  background-color: black;
+  transform: translateY(-2%);
+   box-shadow: 0px 0px 10px rgb(1, 166, 255);
 }
 .Secretary > h1 {
   position: relative;
@@ -400,7 +420,8 @@ body {
   font-size: 2.5em;
 }
 .Account:hover {
-  background-color: black;
+  transform: translateY(-2%);
+   box-shadow: 0px 0px 10px rgb(1, 166, 255);
 }
 .Account {
   display: flex;
@@ -412,8 +433,9 @@ body {
   left: 68%;
   width: 20rem;
   height: 15rem;
-  background-color: rgb(27, 26, 26);
+  background-color: rgb(0, 0, 0);
   transition: 0.5s ease;
+    box-shadow: 0px 0px 1px rgb(21, 172, 253);
 }
 .Mentron {
   display: flex;
@@ -425,11 +447,13 @@ body {
   left: 5%;
   width: 25rem;
   height: 15rem;
-  background-color: rgb(27, 26, 26);
+  background-color: rgb(0, 0, 0);
   transition: 0.5s ease;
+      box-shadow: 0px 0px 1px rgb(21, 172, 253);
 }
 .Mentron:hover {
-  background-color: black;
+  transform: translateY(-2%);
+   box-shadow: 0px 0px 10px rgb(1, 166, 255);
 }
 .Mentron > h1 {
   position: relative;

@@ -11,15 +11,14 @@
       </div>
       <div class="links">
       <router-link to="/homead" class="router-link"
-        ><FontAwesomeIcon :icon="faHome" /> Home</router-link
-      >
-      <router-link to="/homead/Teachers" class="router-link"
+        ><FontAwesomeIcon :icon="faHouse" /> Home</router-link
+      >  <router-link to="/homead/Teachers" class="router-link"
         ><FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers</router-link
       >
       <router-link to="/homead/Student" class="router-link"
         ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
       >
-      <router-link to="/homead/Admin" class="router-link"
+      <router-link to="/homead/Admin" :class="['router-link', { 'router-link-active': isAdminActive }]"
         ><FontAwesomeIcon :icon="faMicrochip" /> Admin</router-link
       >
 
@@ -40,7 +39,7 @@
           <FontAwesomeIcon :icon="faHand" />
           <p style="margin-top: 10%;">Absence/Presence ration</p>
       <router-link to="/homead/Mentron" class="routes"><h1>80-90</h1></router-link>
-          <p>7:30 A.M</p>
+          <p style="margin-top: 10%;">7:30 A.M</p>
         </h1>
       </div>
       <div class="students">
@@ -61,24 +60,17 @@
       </div>
     </div>
     <br />
-    <div class="box1">
+    <div class="overall">
       <h1>Overall Discipline <FontAwesomeIcon :icon="faBrain" /></h1>
-      <div class="discipline">
         <h1>Estimation:</h1>
         <div class="scale">
           <h1>87%</h1>
-          <div class="Bad">
-            <h1>Bad (40%)</h1>
             <hr />
-          </div>
           <hr />
-          <div class="good">
-            <h1>Good (47%)</h1>
-          </div>
         </div>
-      </div>
+      
     </div>
-    <div class="box1">
+    <div class="admit">
       <h1><FontAwesomeIcon :icon="faStickyNote" class="Sticky" /> Admission requests</h1>
       <div class="request">
         <h1>🧑‍💻 John Doe - <span>L3NIT-B</span></h1>
@@ -101,7 +93,7 @@
       </div>
     </div>
     <div class="box1">
-      <h1><FontAwesomeIcon :icon="faClock" class="clock" /> Teaching Schedule</h1>
+      <h1 style="margin-right: 40%;"><FontAwesomeIcon :icon="faClock" class="clock" /> Teaching Schedule</h1>
       <div class="null"></div>
       <div class="Level">
         <div class="time">
@@ -143,14 +135,24 @@ import {
   faHand,
   faStickyNote,
   faChalkboardTeacher,
+  faHouse,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { onMounted } from 'vue'
-import { onUnmounted } from 'vue'
+import { onMounted, onUnmounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import _ from 'lodash'
+
+const route = useRoute()
+const isAdminActive = computed(() => {
+  const adminRoutes = ['/homead/Admin', '/homead/HM', '/homead/DoS', '/homead/Secretary', '/homead/Mentron', '/homead/Accountant']
+  return adminRoutes.includes(route.path)
+})
+const isHomeActive = computed(() => {
+  return route.path === '/homead'
+})
 
 const handleScroll = _.debounce(() => {
   const navbar = document.querySelector('.nav')
@@ -185,12 +187,11 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-.body {
-  width: 100vw;
-  min-height: 400vh;
-  background: white;
-  position: relative;
+.router-link-active {
+  background-color: #00d5ffc8;
+ 
 }
+
 .nav {
   display: flex;
   align-items: center;
@@ -202,8 +203,8 @@ body {
   padding: 0 20px;
   box-sizing: border-box;
   height: fit-content;
-  width: 100vw;
-  top: 18%;
+  width: 105vw;
+  top: 20%;
   z-index: 1000;
 }
 .nav.scrolled {
@@ -262,7 +263,7 @@ body {
 
   left: 5%;
   width: 25vw;
-  height: 23vw;
+  height: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -276,7 +277,7 @@ body {
 .students:nth-child(2) {
   box-shadow: 4px 5px 30px rgb(190, 190, 190);
 }.students:nth-child(2) p {
-  margin-top: -15%;
+  margin-top: -10%;
 }
 
 .students:nth-child(3) {
@@ -292,49 +293,69 @@ body {
 }
 .students p {
   color: rgb(55, 55, 55);
-  font-size: 25px;
-  
+  font-size: 20px;
+  margin-top: -2%;
 }
 .box1 {
   display: flex;
-  position: absolute;
-  width: 35rem;
-  height: 24rem;
+position: relative;
+  width: 30rem;
+  height: 25rem;
   background: rgb(246, 241, 241);
-  top: 120%;
-  left: 1%;
+margin-top: -50%;
+  left: 35%;
   border-radius: 12px;
   box-shadow: 1px 1px 49px rgb(156, 155, 155);
   transition: 0.3s ease-in-out;
 }
+
 .box1 > h1 {
   position: absolute;
   top: 10%;
-  left: 2%;
+  right: 3%;
   font-weight: 450;
   font-size: 25px;
   color: black;
 }
-.box1:nth-child(4) {
+.overall{
   left: 75%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  height: 25rem;
   width: 30rem;
-  top: 120%;
+position: absolute;
+top: 45%;
+border-radius: 12px;
+  box-shadow: 1px 1px 49px rgb(156, 155, 155);
+  transition: 0.3s ease-in-out;
+  align-items: start;
+  color: black;
+  padding: 10px;
 }
-.box1:nth-child(5) {
+.overall h1{
+  margin-left: 1%;
+    color: black;
+   margin: 10px;
+   font-weight: 600;
+}
+.admit {
   left: 40%;
   display: flex;
   justify-content: center;
-  width: 30rem;
-  top: 120%;
+  width: 26rem;
+  height: 27rem;
+  margin-top: 70%;
+   border-radius: 12px;
+  box-shadow: 1px 1px 49px rgb(156, 155, 155);
+  transition: 0.3s ease-in-out;
 }
-.box1:nth-child(5) > h1 {
+.admit > h1 {
   left: 5%;
 }
 .Sticky {
   position: relative;
-  left: 160%;
+  left: 130%;
 }
 .box1:hover {
   transform: translateY(-5%);
@@ -362,7 +383,7 @@ body {
 }
 .clock {
   position: relative;
-  left: 190%;
+  left: 130%;
   color: black;
   font-size: 30px;
 }
@@ -408,7 +429,7 @@ body {
 .time {
   position: absolute;
   font-size: 10px;
-  left: 350%;
+  left: 280%;
   width: 100px;
   opacity: 50%;
   padding: 3px;
@@ -418,7 +439,7 @@ body {
 .time2 {
   position: absolute;
   font-size: 10px;
-  left: 390%;
+  left: 320%;
   width: 100px;
   opacity: 80%;
   padding: 3px;
@@ -461,57 +482,19 @@ body {
   height: 350px;
   padding: 1px;
 }
-.discipline {
-  color: black;
-  display: flex;
-}
-.discipline h1 {
-  margin-left: -110%;
-  margin-top: 60%;
-}
 .scale {
-  position: absolute;
-  top: 20%;
+border-radius: 12px;
   font-size: 35px;
 }
 .scale hr {
-  width: 300px;
+  border-radius: 12px;
+  width: 200px;
   position: absolute;
   height: 35px;
   background-color: black;
-  box-shadow: 1px 1px 19px rgb(156, 155, 155);
+  box-shadow: 100px 0px 1px rgb(158, 157, 157);
+    border: none;
 }
-.Bad {
-  position: absolute;
-  top: 100%;
-  font-size: 35px;
-  left: -105%;
-}
-.Bad hr {
-  width: 400px;
-  position: absolute;
-  height: 35px;
-  background-color: rgb(80, 78, 78);
-}
-.Bad h1 {
-  position: absolute;
-  display: flex;
-  font-size: 20px;
-  justify-content: center;
-  z-index: 100;
-  width: 120px;
-  font-weight: 600;
-  color: rgb(255, 255, 255);
-}
-.good h1 {
-  position: absolute;
-  font-size: 20px;
-  left: 150%;
-  top: 58%;
-  color: white;
-  z-index: 100;
-}
-
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .info {

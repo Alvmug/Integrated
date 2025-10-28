@@ -3,4 +3,6 @@
     <router-view />
   </main>
 </template>
-<script></script>
+<script>
+import './assets/main.css'
+</script>

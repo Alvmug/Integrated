@@ -19,8 +19,13 @@ const routes = [
   {
     path: '/student',
     name: 'Student',
-    component: () => import('@/projects/student/App.vue'),
+    component: () => import('@/projects/homead/App.vue'),
     meta: { project: 'student' },
+  },{
+    path: '/teachers',
+    name: 'Teachers',
+    component: () => import('@/projects/homead/App.vue'),
+meta: { project: 'teachers' },
   },
   {
     path: '/:pathMatch(.*)*',
