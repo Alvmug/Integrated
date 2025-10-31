@@ -86,8 +86,10 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 </script>
 <style scoped>
 body{
+  display: flex;
   margin: 0;
   padding: 0;
+
 }
 .status {
   position: absolute;

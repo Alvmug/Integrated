@@ -10,141 +10,199 @@
         <img src="/src/projects/homead/assets/sgms-high-resolution-logo.png" alt="SMGSlogo" />
       </div>
       <div class="links">
-      <router-link to="/homead" class="router-link"
-        ><FontAwesomeIcon :icon="faHouse" /> Home</router-link
-      >  <router-link to="/homead/Teachers" class="router-link"
-        ><FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers</router-link
-      >
-      <router-link to="/homead/Student" class="router-link"
-        ><FontAwesomeIcon :icon="faGraduationCap" /> Student</router-link
-      >
-      <router-link to="/homead/Admin" :class="['router-link', { 'router-link-active': isAdminActive }]"
-        ><FontAwesomeIcon :icon="faMicrochip" /> Admin</router-link
-      >
-
-
+        <router-link to="/homead" :class="['router-link', { 'router-link-active': isHomeActive }]">
+          <FontAwesomeIcon :icon="faHome" /> Home
+        </router-link>
+        <router-link to="/homead/Teachers" class="router-link">
+          <FontAwesomeIcon :icon="faChalkboardTeacher" /> Teachers
+        </router-link>
+        <router-link to="/homead/Student" class="router-link">
+          <FontAwesomeIcon :icon="faGraduationCap" /> Student
+        </router-link>
+        <router-link to="/homead/Admin" :class="['router-link', { 'router-link-active': isAdminActive }]">
+          <FontAwesomeIcon :icon="faMicrochip" /> Admin
+        </router-link>
       </div>
     </div>
-    <div class="info">
-      <div class="students">
-        <h1>
-          <FontAwesomeIcon :icon="faGraduationCap" />
-          <p>Students</p>
-          <h1>456</h1>
-          <p>Ongoing...</p>
-        </h1>
+    <div class="content">
+      <!-- Info Cards -->
+      <div class="info">
+        <div class="students">
+          <h1>
+            <FontAwesomeIcon :icon="faGraduationCap" />
+            <p>Students</p>
+            <h1>{{ totalStudents }}</h1>
+            <p>Ongoing...</p>
+          </h1>
+        </div>
+        <div class="students">
+          <h1>
+            <FontAwesomeIcon :icon="faHand" />
+            <p style="margin-top: 10%;">Absence/Presence Ratio</p>
+            <router-link to="/homead/Mentron" class="routes"><h1>{{ attendanceRatio }}</h1></router-link>
+            <p style="margin-top: 10%;">7:30 A.M</p>
+          </h1>
+        </div>
+        <div class="students">
+          <h1>
+            <FontAwesomeIcon :icon="faClock" />
+            <p>Schedule</p>
+            <h1>Learning Time</h1>
+            <p>8:30 A.M</p>
+          </h1>
+        </div>
+        <div class="students">
+          <h1>
+            <FontAwesomeIcon :icon="faBullhorn" />
+            <p>Announcements</p>
+            <h1>{{ announcements.length }}</h1>
+            <p>Pending...</p>
+          </h1>
+        </div>
       </div>
-      <div class="students">
-        <h1>
-          <FontAwesomeIcon :icon="faHand" />
-          <p style="margin-top: 10%;">Absence/Presence ration</p>
-      <router-link to="/homead/Mentron" class="routes"><h1>80-90</h1></router-link>
-          <p style="margin-top: 10%;">7:30 A.M</p>
-        </h1>
-      </div>
-      <div class="students">
-        <h1>
-          <FontAwesomeIcon :icon="faClock" />
-          <p>Schedule</p>
-          <h1>Learning Time</h1>
-          <p>8:30 A.M</p>
-        </h1>
-      </div>
-      <div class="students">
-        <h1>
-          <FontAwesomeIcon :icon="faBullhorn" />
-          <p>Announcements</p>
-          <h1>Sports meeting</h1>
-          <p>Pending...</p>
-        </h1>
-      </div>
-    </div>
-    <br />
-    <div class="overall">
-      <h1>Overall Discipline <FontAwesomeIcon :icon="faBrain" /></h1>
+
+      <!-- Overall Discipline -->
+      <div class="overall">
+        <h1>Overall Discipline <FontAwesomeIcon :icon="faBrain" /></h1>
         <h1>Estimation:</h1>
         <div class="scale">
-          <h1>87%</h1>
-            <hr />
+          <h1>{{ disciplinePercentage }}%</h1>
           <hr />
         </div>
-      
-    </div>
-    <div class="admit">
-      <h1><FontAwesomeIcon :icon="faStickyNote" class="Sticky" /> Admission requests</h1>
-      <div class="request">
-        <h1>🧑‍💻 John Doe - <span>L3NIT-B</span></h1>
-        <hr
-          style="
-            width: 250px;
-            background-color: black;
-            padding: 3px;
-            border-radius: 12px;
-            margin-left: -50%;
-          "
-        />
-        <br />
-        <h1 class="enroll">
-          - Recently studied at KCS. <br />
-          - Would like to enroll for a place in NIT. <br />
-          - Highly passionate in networking fields. <br />
-          - Adept in linux.
-        </h1>
       </div>
-    </div>
-    <div class="box1">
-      <h1 style="margin-right: 40%;"><FontAwesomeIcon :icon="faClock" class="clock" /> Teaching Schedule</h1>
-      <div class="null"></div>
-      <div class="Level">
-        <div class="time">
-          <h1>8:00 - 8:40</h1>
-        </div>
-        <h1>L3MMP</h1>
-        <div class="GD">
-          <h1>Graphics Design</h1>
+
+      <!-- Admission Requests -->
+      <div class="admit">
+        <h1><FontAwesomeIcon :icon="faStickyNote" class="Sticky" /> Admission Requests</h1>
+        <div class="request">
+          <h1>🧑‍💻 John Doe - <span>L3NIT-B</span></h1>
+          <hr />
+          <h1 class="enroll">
+            - Recently studied at KCS. <br />
+            - Would like to enroll for a place in NIT. <br />
+            - Highly passionate in networking fields. <br />
+            - Adept in Linux.
+          </h1>
         </div>
       </div>
-      <div class="Level4">
-        <div class="null"></div>
-        <div class="time2">
-          <h1>8:00 - 8:40</h1>
-        </div>
-        <h1>L4SOD</h1>
-        <div class="DS">
-          <h1>Data Structure</h1>
+
+      <!-- Student Performance Assessment -->
+      <div class="section">
+        <h2><FontAwesomeIcon :icon="faChartLine" /> Student Performance Assessment</h2>
+        <div class="assessment">
+          <div class="stat">
+            <h3>Average Score</h3>
+            <p>{{ averageScore }}%</p>
+          </div>
+          <div class="stat">
+            <h3>Top Performer</h3>
+            <p>{{ topPerformer.name }} - {{ topPerformer.score }}%</p>
+          </div>
+          <div class="stat">
+            <h3>Needs Improvement</h3>
+            <p>{{ needsImprovement }} Students</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="Sudo">
-      <h1>
-        <a href="https://www.worldmissionhighschool.org/index"
-          >"Visionary Minds Create Insightful Innovations"
-        </a>
-      </h1>
-    </div>
-    <div class="principal">
-      <img src="/src/projects/homead/assets/Principal.png" alt="" />
+
+      <!-- Study Announcements -->
+      <div class="section">
+        <h2><FontAwesomeIcon :icon="faBullhorn" /> Study Announcements</h2>
+        <div class="announcements">
+          <div class="announcement" v-for="(announcement, index) in announcements" :key="index">
+            <p>{{ announcement }}</p>
+            <button @click="removeAnnouncement(index)">Remove</button>
+          </div>
+          <div class="add-announcement">
+            <input v-model="newAnnouncement" placeholder="Add new announcement" />
+            <button @click="addAnnouncement">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance Tracking -->
+      <div class="section">
+        <h2><FontAwesomeIcon :icon="faCalendarCheck" /> Attendance Tracking</h2>
+        <div class="attendance">
+          <div class="student-attendance" v-for="student in attendanceData" :key="student.id">
+            <h3>{{ student.name }}</h3>
+            <p>Attendance: {{ student.percentage }}%</p>
+            <div class="progress-bar">
+              <div class="progress" :style="{ width: student.percentage + '%' }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discipline Records -->
+      <div class="section">
+        <h2><FontAwesomeIcon :icon="faExclamationTriangle" /> Discipline Records</h2>
+        <div class="discipline">
+          <div class="record" v-for="record in disciplineRecords" :key="record.id">
+            <h3>{{ record.student }}</h3>
+            <p>Incident: {{ record.incident }}</p>
+            <p>Date: {{ record.date }}</p>
+            <p>Action: {{ record.action }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-<script setup>
-import {
-  faBrain,
-  faBullhorn,
-  faClock,
-  faHand,
-  faStickyNote,
-  faChalkboardTeacher,
-  faHouse,
-} from '@fortawesome/free-solid-svg-icons'
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons'
-import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { onMounted, onUnmounted, computed } from 'vue'
-import { useRoute } from 'vue-router'
-import _ from 'lodash'
 
+<script setup>
+import { ref, computed, onMounted, onUnmounted, onBeforeMount } from 'vue'
+import { useRoute } from 'vue-router'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {
+  faGraduationCap,
+  faHand,
+  faClock,
+  faBullhorn,
+  faBrain,
+  faStickyNote,
+  faChartLine,
+  faCalendarCheck,
+  faExclamationTriangle,
+  faHome,
+  faChalkboardTeacher,
+  faMicrochip
+} from '@fortawesome/free-solid-svg-icons'
+import _ from 'lodash'
+import Swal from 'sweetalert2'
+onBeforeMount(() => {
+  Swal.fire({
+    text: "Under Construction!",
+    color: "Red",
+    background: "Black",
+     confirmButtonColor: '#d33',
+     timer: 9000,
+  })
+})
+// Reactive data
+const totalStudents = ref(1200)
+const attendanceRatio = ref('95:5')
+const disciplinePercentage = ref(85)
+const announcements = ref([
+  'Mid-term exams start next week.',
+  'School assembly on Friday at 9 AM.',
+  'New library books available.'
+])
+const newAnnouncement = ref('')
+const averageScore = ref(78)
+const topPerformer = ref({ name: 'Alice Johnson', score: 98 })
+const needsImprovement = ref(45)
+const attendanceData = ref([
+  { id: 1, name: 'John Doe', percentage: 95 },
+  { id: 2, name: 'Jane Smith', percentage: 88 },
+  { id: 3, name: 'Bob Wilson', percentage: 92 }
+])
+const disciplineRecords = ref([
+  { id: 1, student: 'John Doe', incident: 'Late to class', date: '2023-10-01', action: 'Warning' },
+  { id: 2, student: 'Jane Smith', incident: 'Disruptive behavior', date: '2023-10-05', action: 'Detention' }
+])
+
+// Computed properties
 const route = useRoute()
 const isAdminActive = computed(() => {
   const adminRoutes = ['/homead/Admin', '/homead/HM', '/homead/DoS', '/homead/Secretary', '/homead/Mentron', '/homead/Accountant']
@@ -154,6 +212,18 @@ const isHomeActive = computed(() => {
   return route.path === '/homead'
 })
 
+// Methods
+const addAnnouncement = () => {
+  if (newAnnouncement.value.trim()) {
+    announcements.value.push(newAnnouncement.value.trim())
+    newAnnouncement.value = ''
+  }
+}
+
+const removeAnnouncement = (index) => {
+  announcements.value.splice(index, 1)
+}
+
 const handleScroll = _.debounce(() => {
   const navbar = document.querySelector('.nav')
   if (window.scrollY > 10) {
@@ -162,6 +232,7 @@ const handleScroll = _.debounce(() => {
     navbar.classList.remove('scrolled')
   }
 }, 10)
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -186,6 +257,7 @@ body {
   max-width: 100%;
   padding: 0;
   overflow-x: hidden;
+  color: white;
 }
 .router-link-active {
   background-color: #00d5ffc8;
@@ -260,7 +332,7 @@ body {
 .students {
   border-radius: 11px;
   padding: 35px;
-
+margin-top: 15%;
   left: 5%;
   width: 25vw;
   height: 25vw;
@@ -296,27 +368,7 @@ body {
   font-size: 20px;
   margin-top: -2%;
 }
-.box1 {
-  display: flex;
-position: relative;
-  width: 30rem;
-  height: 25rem;
-  background: rgb(246, 241, 241);
-margin-top: -50%;
-  left: 35%;
-  border-radius: 12px;
-  box-shadow: 1px 1px 49px rgb(156, 155, 155);
-  transition: 0.3s ease-in-out;
-}
-
-.box1 > h1 {
-  position: absolute;
-  top: 10%;
-  right: 3%;
-  font-weight: 450;
-  font-size: 25px;
-  color: black;
-}
+ 
 .overall{
   left: 75%;
   display: flex;
@@ -325,7 +377,7 @@ margin-top: -50%;
   height: 25rem;
   width: 30rem;
 position: absolute;
-top: 45%;
+top: 55%;
 border-radius: 12px;
   box-shadow: 1px 1px 49px rgb(156, 155, 155);
   transition: 0.3s ease-in-out;
@@ -357,10 +409,10 @@ border-radius: 12px;
   position: relative;
   left: 130%;
 }
-.box1:hover {
-  transform: translateY(-5%);
-  background: rgba(163, 163, 163, 0.374);
-  color: whitesmoke;
+box1{
+  border: black solid;
+  width: 700px;
+  height: 400px;
 }
 .request {
   display: flex;
